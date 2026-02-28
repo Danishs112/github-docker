@@ -12,11 +12,11 @@ jobs:
     environment: testing
     runs-on: ubuntu-latest
     env:
-      MONGODB_CONNECTION_PROTOCOL: mongodb+srv
-      MONGODB_CLUSTER_ADDRESS: cluster0.enldwir.mongodb.net
-      MONGODB_USERNAME: danish
-      MONGODB_PASSWORD: wdlf56lbPQs0TFlm
-      MONGODB_DB_NAME: gha-demo
+      MONGODB_CONNECTION_PROTOCOL: ${{ secrets.MONGODB_CONNECTION_PROTOCOL }}
+      MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      MONGODB_DB_NAME: ${{ secrets.MONGODB_DB_NAME }}
       PORT: 8080
     steps:
       - name: Get Code
