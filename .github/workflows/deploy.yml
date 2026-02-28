@@ -14,8 +14,8 @@ jobs:
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: cluster0.enldwir.mongodb.net
-      MONGODB_USERNAME: danishsoma
-      MONGODB_PASSWORD: 5VTbM0rbHFTQ5ep5
+      MONGODB_USERNAME: danish
+      MONGODB_PASSWORD: wdlf56lbPQs0TFlm
       PORT: 8080
     steps:
       - name: Get Code
@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT # requires MongoDB Atlas to accept requests from anywhere!
+        run: npm start & npx wait-on http://127.0.0.1:8080 # requires MongoDB Atlas to accept requests from anywhere!
       - name: Run tests
         run: npm test
       - name: Output information

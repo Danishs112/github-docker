@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { MongoClient } from 'mongodb';
 
 const connectionProtocol = process.env.MONGODB_CONNECTION_PROTOCOL;
@@ -6,19 +9,24 @@ const dbUser = process.env.MONGODB_USERNAME;
 const dbPassword = process.env.MONGODB_PASSWORD;
 const dbName = process.env.MONGODB_DB_NAME;
 
-const uri = `${connectionProtocol}://${dbUser}:${dbPassword}@${clusterAddress}/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri);
+if (!connectionProtocol || !clusterAddress || !dbUser || !dbPassword || !dbName) {
+  console.error("Missing MongoDB environment variables");
+  process.exit(1);
+}
 
-console.log('Trying to connect to db');
+const uri = `${connectionProtocol}://${dbUser}:${dbPassword}@${clusterAddress}/?retryWrites=true&w=majority`;
+
+console.log("Trying to connect to db");
+console.log('uri:', uri);
+const client = new MongoClient(uri);
 
 try {
   await client.connect();
   await client.db(dbName).command({ ping: 1 });
-  console.log('Connected successfully to server');
+  console.log("Connected successfully to server");
 } catch (error) {
-  console.log('Connection failed.');
+  console.error("Connection failed:", error.message);
   await client.close();
-  console.log('Connection closed.');
   process.exit(1);
 }
 
