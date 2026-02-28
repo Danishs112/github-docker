@@ -14,8 +14,8 @@ jobs:
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb+srv
       MONGODB_CLUSTER_ADDRESS: cluster0.enldwir.mongodb.net
-      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      MONGODB_USERNAME: danishsoma
+      MONGODB_PASSWORD: 5VTbM0rbHFTQ5ep5
       PORT: 8080
     steps:
       - name: Get Code
