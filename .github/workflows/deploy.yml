@@ -16,6 +16,7 @@ jobs:
       MONGODB_CLUSTER_ADDRESS: cluster0.enldwir.mongodb.net
       MONGODB_USERNAME: danish
       MONGODB_PASSWORD: wdlf56lbPQs0TFlm
+      MONGODB_DB_NAME: gha-demo
       PORT: 8080
     steps:
       - name: Get Code
